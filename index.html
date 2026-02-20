@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GWC | Gujarat Watch Company</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;600&family=Playfair+Display:ital,wght@0,700;1,400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #050505;
+            --gold: #c5a059;
+            --white: #ffffff;
+            --gray-dark: #0a0a0a;
+            --accent: #161616;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { background: var(--bg); color: var(--white); font-family: 'Montserrat', sans-serif; overflow-x: hidden; }
+
+        /* --- NAVIGATION --- */
+        nav { 
+            position: fixed; width: 100%; padding: 20px 5%; 
+            display: flex; justify-content: space-between; align-items: center; 
+            z-index: 1000; background: rgba(5,5,5,0.85); backdrop-filter: blur(15px);
+            border-bottom: 1px solid rgba(197, 160, 89, 0.1);
+        }
+        .logo { font-family: 'Playfair Display', serif; font-size: 1.4rem; letter-spacing: 6px; color: var(--gold); text-decoration: none; font-weight: 700; }
+        .nav-links { display: flex; align-items: center; }
+        .nav-links a { color: var(--white); text-decoration: none; margin-left: 30px; font-size: 0.65rem; letter-spacing: 3px; text-transform: uppercase; transition: 0.4s; }
+        .nav-enquire-btn { border: 1px solid var(--gold); padding: 10px 25px; color: var(--gold) !important; }
+        .nav-enquire-btn:hover { background: var(--gold); color: black !important; }
+
+        /* --- HERO --- */
+        header { 
+            height: 100vh; display: flex; flex-direction: column; 
+            justify-content: center; align-items: center; text-align: center;
+            background: radial-gradient(circle at center, #151515 0%, #050505 100%);
+        }
+        .hero-title { font-family: 'Playfair Display', serif; font-size: clamp(3rem, 15vw, 9rem); font-weight: 700; line-height: 0.8; margin-bottom: 20px; animation: heroFocus 3s ease-out; }
+        .hero-subtitle { color: var(--gold); text-transform: uppercase; font-size: 0.7rem; letter-spacing: 15px; margin-bottom: 40px; }
+
+        /* --- SPEC RIBBON --- */
+        .spec-ribbon {
+            display: flex; justify-content: space-around; padding: 40px 10%;
+            background: var(--gray-dark); border-bottom: 1px solid #111;
+        }
+        .spec-box { text-align: center; }
+        .spec-box span { display: block; color: var(--gold); font-size: 0.6rem; letter-spacing: 2px; margin-bottom: 5px; }
+        .spec-box p { font-size: 0.8rem; letter-spacing: 1px; }
+
+        /* --- SCROLL REVEAL --- */
+        .reveal { opacity: 0; transform: translateY(40px); transition: all 1.2s cubic-bezier(0.16, 1, 0.3, 1); }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
+        @keyframes heroFocus {
+            from { opacity: 0; filter: blur(20px); transform: scale(1.1); }
+            to { opacity: 1; filter: blur(0); transform: scale(1); }
+        }
+
+        /* --- COLLECTION --- */
+        section { padding: 120px 10%; }
+        .collection-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 50px; }
+        .watch-card { background: var(--accent); border: 1px solid #222; transition: 0.5s; overflow: hidden; }
+        .watch-card:hover { border-color: var(--gold); transform: translateY(-10px); }
+        .img-container { height: 450px; background: #000; overflow: hidden; display: flex; align-items: center; justify-content: center; }
+        .img-container img { width: 100%; height: 100%; object-fit: contain; transition: 1.5s; opacity: 0.8; }
+        .watch-card:hover img { opacity: 1; transform: scale(1.05); }
+        .watch-info { padding: 40px; text-align: center; }
+        .watch-info h3 { font-family: 'Playfair Display', serif; font-size: 1.8rem; margin-bottom: 10px; }
+        .watch-info p { color: var(--gold); font-size: 0.7rem; letter-spacing: 3px; margin-bottom: 25px; }
+
+        /* --- BUTTONS --- */
+        .btn-gold { border: 1px solid var(--gold); padding: 15px 40px; color: var(--gold); text-decoration: none; text-transform: uppercase; font-size: 0.7rem; letter-spacing: 3px; transition: 0.5s; cursor: pointer; background: transparent; }
+        .btn-gold:hover { background: var(--gold); color: black; }
+
+        /* --- ENQUIRY MODAL --- */
+        #enquiry-overlay { 
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
+            background: rgba(0,0,0,0.96); z-index: 2000; display: none; 
+            justify-content: center; align-items: center; backdrop-filter: blur(10px);
+        }
+        .form-container { background: #111; padding: 60px; border: 1px solid var(--gold); width: 90%; max-width: 500px; position: relative; }
+        .close-form { position: absolute; top: 20px; right: 20px; cursor: pointer; color: var(--gold); font-size: 1.5rem; }
+        input, select, textarea { width: 100%; background: transparent; border: none; border-bottom: 1px solid #333; color: white; padding: 15px 0; margin-bottom: 30px; font-family: 'Montserrat'; outline: none; }
+        input:focus { border-bottom-color: var(--gold); }
+
+        footer { padding: 80px 10%; text-align: center; border-top: 1px solid #111; color: #444; font-size: 0.6rem; letter-spacing: 4px; }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="#" class="logo">GWC</a>
+        <div class="nav-links">
+            <a href="#about">Story</a>
+            <a href="#collections">Series</a>
+            <a href="javascript:void(0)" onclick="openEnquiry('General Inquiry')" class="nav-enquire-btn">Enquire</a>
+        </div>
+    </nav>
+
+    <header>
+        <p class="hero-subtitle">The Zenith of Gujarat</p>
+        <h1 class="hero-title">SCORPIO</h1>
+        <a href="#collections" class="btn-gold" style="margin-top: 30px;">Explore Collection</a>
+    </header>
+
+    <div class="spec-ribbon reveal">
+        <div class="spec-box"><span>CALIBER</span><p>G-01 AUTO</p></div>
+        <div class="spec-box"><span>FREQUENCY</span><p>28,800 VPH</p></div>
+        <div class="spec-box"><span>RESERVE</span><p>72 HOURS</p></div>
+        <div class="spec-box"><span>ORIGIN</span><p>AHMEDABAD</p></div>
+    </div>
+
+    <section id="collections">
+        <div style="text-align: center; margin-bottom: 80px;" class="reveal">
+            <h2 style="font-family:'Playfair Display'; font-size: 3.5rem;">The Series</h2>
+            <p style="color: var(--gold); letter-spacing: 5px; font-size: 0.7rem; margin-top: 10px;">FOUNDER'S BATCH | LIMITED ALLOCATION</p>
+        </div>
+
+        <div class="collection-grid">
+            <div class="watch-card reveal">
+                <div class="img-container">
+                    <img src="images/scorpio.png" alt="Scorpio Stealth">
+                </div>
+                <div class="watch-info">
+                    <h3>Scorpio Stealth</h3>
+                    <p>TITANIUM / OBSIDIAN DIAL</p>
+                    <a href="javascript:void(0)" onclick="openEnquiry('Scorpio Stealth')" class="btn-gold">Request Access</a>
+                </div>
+            </div>
+
+            <div class="watch-card reveal" style="transition-delay: 0.2s;">
+                <div class="img-container">
+                    <img src="images/horoscope.png" alt="Horoscope Aries">
+                </div>
+                <div class="watch-info">
+                    <h3>Horoscope Aries</h3>
+                    <p>18K GOLD / ENAMEL</p>
+                    <a href="javascript:void(0)" onclick="openEnquiry('Horoscope Aries')" class="btn-gold">Request Access</a>
+                </div>
+            </div>
+
+            <div class="watch-card reveal" style="transition-delay: 0.4s;">
+                <div class="img-container">
+                    <img src="images/heritage.png" alt="Heritage G-01">
+                </div>
+                <div class="watch-info">
+                    <h3>Heritage G-01</h3>
+                    <p>STEEL / OPEN HEART</p>
+                    <a href="javascript:void(0)" onclick="openEnquiry('Heritage G-01')" class="btn-gold">Request Access</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div id="enquiry-overlay">
+        <div class="form-container">
+            <span class="close-form" onclick="closeEnquiry()">✕</span>
+            <h2 style="font-family:'Playfair Display'; margin-bottom: 10px;">The Consultation</h2>
+            <p style="color: #666; font-size: 0.8rem; margin-bottom: 40px;">Request an allocation for the GWC Founders Series.</p>
+            
+            <form action="https://formspree.io/f/your-unique-id" method="POST">
+                <input type="text" name="Name" placeholder="FULL NAME" required>
+                <input type="email" name="Email" placeholder="EMAIL ADDRESS" required>
+                <input type="text" name="Model" id="model-selected" readonly style="color: var(--gold);">
+                <textarea name="Message" rows="3" placeholder="YOUR MESSAGE"></textarea>
+                <button type="submit" class="btn-gold" style="width: 100%;">Submit Request</button>
+            </form>
+        </div>
+    </div>
+
+    <footer>
+        GUJARAT WATCH COMPANY &copy; 2026 | THE ART OF MECHANICAL PURITY
+    </footer>
+
+    <script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) entry.target.classList.add('active');
+            });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        function openEnquiry(modelName) {
+            document.getElementById('enquiry-overlay').style.display = 'flex';
+            document.getElementById('model-selected').value = "Inquiry: " + modelName;
+        }
+        function closeEnquiry() {
+            document.getElementById('enquiry-overlay').style.display = 'none';
+        }
+    </script>
+</body>
+</html>
