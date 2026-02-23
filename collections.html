@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Collections | GWC Luxury</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;600&family=Playfair+Display:ital,wght@0,700;1,400&display=swap" rel="stylesheet">
+    <style>
+        :root { --bg: #050505; --gold: #c5a059; --white: #ffffff; --gray: #0a0a0a; --accent: #111; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { background: var(--bg); color: var(--white); font-family: 'Montserrat', sans-serif; }
+
+        /* --- NAVIGATION --- */
+        nav { 
+            position: fixed; width: 100%; padding: 25px 5%; 
+            display: flex; justify-content: space-between; align-items: center; 
+            z-index: 1000; background: rgba(5,5,5,0.9); backdrop-filter: blur(15px);
+            border-bottom: 1px solid rgba(197, 160, 89, 0.1);
+        }
+        .logo { font-family: 'Playfair Display', serif; color: var(--gold); text-decoration: none; letter-spacing: 5px; font-weight: 700; font-size: 1.4rem; }
+        .nav-links a { color: var(--white); text-decoration: none; margin-left: 30px; font-size: 0.65rem; letter-spacing: 3px; text-transform: uppercase; }
+
+        /* --- HEADER --- */
+        .collection-header { 
+            padding: 180px 10% 80px 10%; 
+            text-align: center; 
+            background: linear-gradient(to bottom, #111, #050505);
+        }
+        .collection-header h1 { font-family: 'Playfair Display', serif; font-size: clamp(3rem, 6vw, 5rem); margin-bottom: 20px; }
+        .collection-header p { color: var(--gold); letter-spacing: 10px; text-transform: uppercase; font-size: 0.8rem; }
+
+        /* --- FILTER / CATEGORY BAR (Optional Luxury Touch) --- */
+        .filter-bar { 
+            display: flex; justify-content: center; gap: 40px; padding: 20px 0; 
+            border-bottom: 1px solid #111; margin-bottom: 60px;
+        }
+        .filter-item { font-size: 0.65rem; letter-spacing: 2px; color: #555; cursor: pointer; transition: 0.3s; text-transform: uppercase; }
+        .filter-item.active, .filter-item:hover { color: var(--gold); }
+
+        /* --- COLLECTION GRID --- */
+        section { padding: 0 10% 120px 10%; }
+        .reveal { opacity: 0; transform: translateY(40px); transition: 1.2s cubic-bezier(0.16, 1, 0.3, 1); }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
+        .portfolio-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); 
+            gap: 20px; 
+        }
+
+        .portfolio-item { 
+            background: var(--gray); 
+            height: 600px; 
+            display: flex; 
+            flex-direction: column; 
+            justify-content: flex-end; 
+            padding: 60px; 
+            position: relative; 
+            overflow: hidden; 
+            border: 1px solid #111;
+            text-decoration: none;
+            transition: 0.5s;
+        }
+        
+        .portfolio-item:hover { border-color: var(--gold); }
+
+        .watch-preview { 
+            position: absolute; top: 50%; left: 50%; transform: translate(-50%, -60%); 
+            width: 70%; transition: 1.5s cubic-bezier(0.2, 0.8, 0.2, 1); 
+            z-index: 1; opacity: 0.7;
+        }
+        .portfolio-item:hover .watch-preview { transform: translate(-50%, -65%) scale(1.05); opacity: 1; }
+
+        .item-info { z-index: 2; }
+        .item-info span { color: var(--gold); font-size: 0.7rem; letter-spacing: 4px; text-transform: uppercase; display: block; margin-bottom: 10px; }
+        .item-info h2 { font-family: 'Playfair Display'; font-size: 2.2rem; color: #fff; margin-bottom: 20px; }
+        
+        .btn-discover { 
+            display: inline-block; padding: 12px 30px; border: 1px solid var(--gold); 
+            color: var(--gold); font-size: 0.65rem; letter-spacing: 2px; text-transform: uppercase;
+            transition: 0.4s;
+        }
+        .portfolio-item:hover .btn-discover { background: var(--gold); color: #000; }
+
+        /* --- FOOTER --- */
+        footer { padding: 80px; text-align: center; border-top: 1px solid #111; color: #444; font-size: 0.6rem; letter-spacing: 4px; }
+
+        @media (max-width: 768px) {
+            .portfolio-grid { grid-template-columns: 1fr; }
+            .portfolio-item { height: 500px; padding: 40px; }
+            .watch-preview { width: 85%; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="index.html" class="logo">GWC</a>
+        <div class="nav-links">
+            <a href="index.html#about">Story</a>
+            <a href="collection.html" style="color: var(--gold);">Portfolio</a>
+            <a href="index.html#enquire">Enquire</a>
+        </div>
+    </nav>
+
+    <header class="collection-header">
+        <p>Curated Excellence</p>
+        <h1>The Portfolio</h1>
+    </header>
+
+    <div class="filter-bar">
+        <div class="filter-item active">All Timepieces</div>
+        <div class="filter-item">Founders Series</div>
+        <div class="filter-item">Celestial</div>
+        <div class="filter-item">Complications</div>
+    </div>
+
+    <section>
+        <div class="portfolio-grid">
+            <a href="scorpio.html" class="portfolio-item reveal">
+                <img src="images/scorpio.png" class="watch-preview" alt="Scorpio Stealth">
+                <div class="item-info">
+                    <span>Grade 5 Titanium</span>
+                    <h2>Scorpio Stealth</h2>
+                    <div class="btn-discover">View Details</div>
+                </div>
+            </a>
+
+            <a href="horoscope.html" class="portfolio-item reveal" style="transition-delay: 0.2s;">
+                <img src="images/horoscope.png" class="watch-preview" alt="Horoscope Aries">
+                <div class="item-info">
+                    <span>18K Rose Gold</span>
+                    <h2>Horoscope Aries</h2>
+                    <div class="btn-discover">View Details</div>
+                </div>
+            </a>
+
+            <a href="heritage.html" class="portfolio-item reveal" style="transition-delay: 0.4s;">
+                <img src="images/heritage.png" class="watch-preview" alt="Heritage G-01">
+                <div class="item-info">
+                    <span>Brushed Steel</span>
+                    <h2>Heritage G-01</h2>
+                    <div class="btn-discover">View Details</div>
+                </div>
+            </a>
+            
+             <a href="celestial.html" class="portfolio-item reveal" style="transition-delay: 0.6s;">
+                <img src="images/celestial.png" class="watch-preview" alt="Celestial Noir">
+                <div class="item-info">
+                    <span>Forged Carbon</span>
+                    <h2>Celestial Noir</h2>
+                    <div class="btn-discover">View Details</div>
+                </div>
+            </a>
+        </div>
+    </section>
+
+    <footer>
+        GUJARAT WATCH COMPANY &copy; 2026 | THE ART OF MECHANICAL PURITY
+    </footer>
+
+    <script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) entry.target.classList.add('active');
+            });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>
